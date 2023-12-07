@@ -1,10 +1,10 @@
 <template>
-  <div class="flex h-screen">
-    <div class="flex-1 overflow-x-hidden overflow-y-auto">
+  <div class="sm:flex h-screen">
+    <div class="flex-1 overflow-x-hidden overflow-y-auto hidden lg:block">
       <!-- <LayoutHeader /> -->
       <slot />
     </div>
-    <div class="flex-shrink-0 w-64">
+    <div class="flex-shrink-0 md:w-64">
       <SideBar />
     </div>
   </div>
