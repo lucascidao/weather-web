@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar py-4 px-5 h-screen text-white">
+  <div class="sidebar py-4 px-2 h-screen text-white">
     <!-- Place -->
     <div class="grid grid-cols-2 mb-10">
       <div class="">
@@ -19,33 +19,55 @@
     <div class="mb-10">
       <hr size="10" class="mb-5" />
       <h3 class="mb-2">Chance of rain</h3>
-      <div class="w-full bg-slate-700 h-5 rounded-xl">
-        <div class="w-1/4 bg-blue-600 rounded-xl h-5 z-10"></div>
+      <div class="grid grid-cols-1">
+        <div class="grid grid-cols-3 mb-2">
+          <span class="text-sm">10 PM</span>
+          <div class="bg-slate-700 h-5 rounded-xl">
+            <div class="w-2/6 bg-blue-600 rounded-xl h-5 z-10"></div>
+          </div>
+          <span class="text-sm">20%</span>
+        </div>
+        <div class="grid grid-cols-3 mb-2">
+          <span class="text-sm">10 PM</span>
+          <div class="bg-slate-700 h-5 rounded-xl">
+            <div class="w-3/6 bg-blue-600 rounded-xl h-5 z-10"></div>
+          </div>
+          <span class="text-sm">20%</span>
+        </div>
+        <div class="grid grid-cols-3 mb-2">
+          <span class="text-sm">10 PM</span>
+          <div class="bg-slate-700 h-5 rounded-xl">
+            <div class="w-4/6 bg-blue-600 rounded-xl h-5 z-10"></div>
+          </div>
+          <span class="text-sm">20%</span>
+        </div>
+        <div class="grid grid-cols-3 mb-2">
+          <span class="text-sm">10 PM</span>
+          <div class="bg-slate-700 h-5 rounded-xl">
+            <div class="w-6/6 bg-blue-600 rounded-xl h-5 z-10"></div>
+          </div>
+          <span class="text-sm">20%</span>
+        </div>
       </div>
-      <br />
-      <div class="bg-slate-700 h-5 rounded-xl">
-        <div class="w-2/6 bg-blue-600 rounded-xl h-5 z-10"></div>
-      </div>
-      <br />
-      <div class="bg-slate-700 h-5 rounded-xl">
-        <div class="w-3/6 bg-blue-600 rounded-xl h-5 z-10"></div>
-      </div>
-      <br />
-      <div class="bg-slate-700 h-5 rounded-xl">
-        <div class="w-6/6 bg-blue-600 rounded-xl h-5 z-10"></div>
-      </div>
-      <br />
     </div>
     <!-- Sunrise & Sunset-->
-    <div class="border rounded h-20 mb-5 grid grid-cols-2 px-5 gap-8">
-      <div class="flex items-center">
-        <input type="image" src="../../../assets/sunrise.png" alt="" />
+    <div
+      class="border rounded h-20 mb-5 grid grid-cols-2 px-5 gap-8 hover:border-yellow-400"
+    >
+      <div class="flex items-start mt-4 flex-col">
+        <div>Sunset</div>
+        <div>5:45</div>
       </div>
-      <div class="flex items-center">{{ currentHour }}:{{ currentMinute }}</div>
+      <div class="flex items-center text-sm">5 hours ago</div>
     </div>
-    <div class="border rounded h-20 mb-5 grid grid-cols-2 px-5 gap-8">
-      <div class="flex items-center">Sunrise</div>
-      <div class="flex items-center">{{ currentHour }}:{{ currentMinute }}</div>
+    <div
+      class="border rounded h-20 mb-5 grid grid-cols-2 px-5 gap-8 hover:border-yellow-400"
+    >
+      <div class="flex items-start mt-4 flex-col">
+        <div>Sunrise</div>
+        <div>5:45</div>
+      </div>
+      <div class="flex items-center text-sm">in 2 hours</div>
     </div>
   </div>
 </template>
