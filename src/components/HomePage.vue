@@ -10,12 +10,82 @@
           type="search"
           name="search"
           id="pesquisa"
-          class="border w-full bg-gray-100"
+          placeholder="Search Location"
+          class="w-full h-8 bg-gray-100 p-2"
         />
       </div>
-      <div class="w-1/6 flex-items-center">
-        <input class="w-10 h-10 border mr-4" type="button" value="test" />
-        <input class="w-10 h-10 border" type="button" value="test1" />
+      <div class="ml-10 w-1/6 flex items-center">
+        <button
+          class="bg-gray-100 w-10 h-8 hover:bg-gray-200 hover:border-gray-300"
+        >
+          <font-awesome-icon icon="fa-solid fa-user" />
+        </button>
+        <button
+          class="ml-4 bg-gray-100 w-10 h-8 hover:bg-gray-200 hover:border-gray-300"
+        >
+          <font-awesome-icon icon="fa-solid fa-gear" />
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="m-5 text-start font-bold">Today Overview</div>
+      <div class="mx-5 grid grid-cols-2 gap-10">
+        <div class="w-full h-36 bg-gray-100 p-5">
+          <div class="grid grid-cols-4">
+            <div class="fa-2xl self-center col-span-1">
+              <font-awesome-icon icon="fa-solid fa-wind" />
+            </div>
+            <div class="flex-1 space-y-6 self-center col-span-2">
+              <div class="">Wind Speed</div>
+              <div><div class="font-bold text-3xl">15 KM/h</div></div>
+            </div>
+            <div class="flex-1 mt-10 self-center col-span-1">
+              <div class="font-semibold text-sm">&#8599; 4km/h</div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full h-36 bg-gray-100 p-5">
+          <div class="grid grid-cols-4">
+            <div class="fa-2xl self-center col-span-1">
+              <font-awesome-icon icon="fa-solid fa-cloud-rainlula" />
+            </div>
+            <div class="flex-1 space-y-6 self-center col-span-2">
+              <div class="">Rain Chance</div>
+              <div><div class="font-bold text-3xl">20%</div></div>
+            </div>
+            <div class="flex-1 mt-10 self-center col-span-1">
+              <div class="font-semibold text-sm">&#8599; 10%</div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full h-36 bg-gray-100 p-5">
+          <div class="grid grid-cols-4">
+            <div class="fa-2xl self-center col-span-1">
+              <font-awesome-icon icon="fa-solid fa-water" />
+            </div>
+            <div class="flex-1 space-y-6 self-center col-span-2">
+              <div class="">Pressure</div>
+              <div><div class="font-bold text-3xl">730 hpa</div></div>
+            </div>
+            <div class="flex-1 mt-10 self-center col-span-1">
+              <div class="font-semibold text-sm">&#8601; 21 hpa</div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full h-36 bg-gray-100 p-5">
+          <div class="grid grid-cols-4">
+            <div class="fa-2xl self-center col-span-1">
+              <font-awesome-icon icon="fa-solid fa-sun" />
+            </div>
+            <div class="flex-1 space-y-6 self-center col-span-2">
+              <div class="">Uv Index</div>
+              <div><div class="font-bold text-3xl">2,6</div></div>
+            </div>
+            <div class="flex-1 mt-10 self-center col-span-1">
+              <div class="font-semibold text-sm">&#8601; 0,2</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

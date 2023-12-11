@@ -4,7 +4,7 @@
       <!-- <LayoutHeader /> -->
       <slot />
     </div>
-    <div class="flex-shrink-0 md:w-64">
+    <div class="flex-shrink-0 md:w-72">
       <SideBar />
     </div>
   </div>
