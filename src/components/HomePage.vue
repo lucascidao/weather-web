@@ -3,7 +3,9 @@
     <div id="header" class="flex w-full h-30 border-b-2 py-2">
       <div class="w-1/6 h-auto">
         <span class="font-bold text-base">December 2023 <br /></span>
-        <span class="text-gray-500 text-sm">Friday,December 7,2023</span>
+        <span class="text-gray-500 text-sm"
+          >{{ currentMonth }}/{{ currentDay }}/{{ currentYear }}</span
+        >
       </div>
       <div class="w-4/6 flex items-center">
         <input
@@ -47,7 +49,7 @@
         <div class="w-full h-36 bg-gray-100 p-5">
           <div class="grid grid-cols-4">
             <div class="fa-2xl self-center col-span-1">
-              <font-awesome-icon icon="fa-solid fa-cloud-rainlula" />
+              <font-awesome-icon icon="fa-solid fa-cloud-rain" />
             </div>
             <div class="flex-1 space-y-6 self-center col-span-2">
               <div class="">Rain Chance</div>
@@ -96,6 +98,13 @@ export default {
   name: "HomePage",
   props: {
     msg: String,
+  },
+  data() {
+    return {
+      currentDay: new Date().getDate(),
+      currentMonth: new Date().getMonth() + 1,
+      currentYear: new Date().getFullYear(),
+    };
   },
 };
 </script>

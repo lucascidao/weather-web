@@ -90,6 +90,7 @@ export default {
     return {
       currentHour: new Date().getHours(),
       currentMinute: new Date().getMinutes(),
+      currentDay: new Date().getDay(),
     };
   },
 };
