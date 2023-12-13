@@ -135,7 +135,7 @@ export default {
     },
     async getWeather() {
       const response = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?lat=-22.523977269086362&lon=-43.998343432807246&appid=af12cdf50f700eb1a06c5cce3a336557"
+        "https://api.openweathermap.org/data/2.5/weather?lat=-22.523977269086362&lon=-43.998343432807246&appid={OPENWEATHERAPIKEY}"
       );
       const data = await response.json();
       this.weather = data;
