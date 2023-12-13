@@ -18,9 +18,10 @@ import {
   faSun,
   faUser,
   faGear,
+  faCloudSun,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faWind, faCloudRain, faWater, faSun, faUser, faGear);
+library.add(faWind, faCloudRain, faWater, faSun, faUser, faGear, faCloudSun);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

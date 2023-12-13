@@ -17,8 +17,10 @@
         <font-awesome-icon icon="fa-solid fa-cloud-rain" />
       </div>
       <div class="col-span-1"></div>
-      <span class="col-span-1 text-4xl">20&deg;C</span>
-      <span class="col-span-1 flex items-center ml-6">Raining</span>
+      <span class="col-span-1 text-4xl">{{ temperature }}&deg;C</span>
+      <span class="col-span-1 flex items-center ml-6">{{
+        weather.weather[0].description
+      }}</span>
     </div>
     <!-- Umity -->
     <div class="mb-10">
@@ -61,18 +63,22 @@
     >
       <div class="flex items-start mt-4 flex-col">
         <div>Sunset</div>
-        <div>5:45</div>
+        <div>{{ sunset }}</div>
       </div>
-      <div class="flex items-center text-sm">5 hours ago</div>
+      <div class="flex items-center fa-2xl">
+        <font-awesome-icon icon="fa-solid fa-cloud-sun" />
+      </div>
     </div>
     <div
       class="border rounded h-20 mb-5 grid grid-cols-2 px-5 gap-8 hover:border-yellow-400"
     >
       <div class="flex items-start mt-4 flex-col">
         <div>Sunrise</div>
-        <div>17:55</div>
+        <div>{{ sunrise }}</div>
       </div>
-      <div class="flex items-center text-sm">in 2 hours</div>
+      <div class="flex items-center fa-2xl">
+        <font-awesome-icon icon="fa-solid fa-sun" />
+      </div>
     </div>
   </div>
 </template>
@@ -84,14 +90,58 @@
 </style>
 
 <script>
+// import axios from "axios";
+
 export default {
   name: "SideBar",
   data() {
     return {
+      weather: {
+        weather: [
+          {
+            description: "---",
+          },
+        ],
+        main: {
+          temp: 0,
+          pressure: 0,
+          humidity: 0,
+        },
+        sys: {
+          sunrise: 0,
+          sunset: 0,
+        },
+      },
+      temperature: 0,
+      sunrise: 0,
+      sunset: 0,
       currentHour: new Date().getHours(),
       currentMinute: new Date().getMinutes(),
       currentDay: new Date().getDay(),
     };
+  },
+  async mounted() {
+    await this.getWeather();
+  },
+  methods: {
+    getTemperature() {
+      return Math.round(this.weather.main.temp - 273.15);
+    },
+    getSunsetSunrise() {
+      let dateSet = new Date(this.weather.sys.sunset * 1000);
+      let dateRise = new Date(this.weather.sys.sunrise * 1000);
+      this.sunset = dateSet.getHours() + ":" + dateSet.getMinutes();
+      this.sunrise = dateRise.getHours() + ":" + dateRise.getMinutes();
+    },
+    async getWeather() {
+      const response = await fetch(
+        "https://api.openweathermap.org/data/2.5/weather?lat=-22.523977269086362&lon=-43.998343432807246&appid=af12cdf50f700eb1a06c5cce3a336557"
+      );
+      const data = await response.json();
+      this.weather = data;
+      this.temperature = this.getTemperature();
+      this.getSunsetSunrise();
+    },
   },
 };
 </script>

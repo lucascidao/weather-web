@@ -12,6 +12,7 @@
           type="search"
           name="search"
           id="pesquisa"
+          disabled
           placeholder="Search Location"
           class="w-full h-8 bg-gray-100 p-2"
         />
@@ -39,10 +40,14 @@
             </div>
             <div class="flex-1 space-y-6 self-center col-span-2">
               <div class="">Wind Speed</div>
-              <div><div class="font-bold text-3xl">15 KM/h</div></div>
+              <div>
+                <div class="font-bold text-3xl">
+                  {{ weather.wind.speed }} Km/h
+                </div>
+              </div>
             </div>
             <div class="flex-1 mt-10 self-center col-span-1">
-              <div class="font-semibold text-sm">&#8599; 4km/h</div>
+              <div class="font-semibold text-sm">&#8599;</div>
             </div>
           </div>
         </div>
@@ -52,11 +57,15 @@
               <font-awesome-icon icon="fa-solid fa-cloud-rain" />
             </div>
             <div class="flex-1 space-y-6 self-center col-span-2">
-              <div class="">Rain Chance</div>
-              <div><div class="font-bold text-3xl">20%</div></div>
+              <div class="">Humidity</div>
+              <div>
+                <div class="font-bold text-3xl">
+                  {{ weather.main.humidity }} %
+                </div>
+              </div>
             </div>
             <div class="flex-1 mt-10 self-center col-span-1">
-              <div class="font-semibold text-sm">&#8599; 10%</div>
+              <div class="font-semibold text-sm">&#8599;</div>
             </div>
           </div>
         </div>
@@ -67,10 +76,14 @@
             </div>
             <div class="flex-1 space-y-6 self-center col-span-2">
               <div class="">Pressure</div>
-              <div><div class="font-bold text-3xl">730 hpa</div></div>
+              <div>
+                <div class="font-bold text-3xl">
+                  {{ weather.main.pressure }} hpa
+                </div>
+              </div>
             </div>
             <div class="flex-1 mt-10 self-center col-span-1">
-              <div class="font-semibold text-sm">&#8601; 21 hpa</div>
+              <div class="font-semibold text-sm">&#8601;</div>
             </div>
           </div>
         </div>
@@ -80,11 +93,15 @@
               <font-awesome-icon icon="fa-solid fa-sun" />
             </div>
             <div class="flex-1 space-y-6 self-center col-span-2">
-              <div class="">Uv Index</div>
-              <div><div class="font-bold text-3xl">2,6</div></div>
+              <div class="">Feels Like</div>
+              <div>
+                <div class="font-bold text-3xl">
+                  {{ Math.round(weather.main.feels_like - 273.15) }}
+                </div>
+              </div>
             </div>
             <div class="flex-1 mt-10 self-center col-span-1">
-              <div class="font-semibold text-sm">&#8601; 0,2</div>
+              <div class="font-semibold text-sm">&#8601;</div>
             </div>
           </div>
         </div>
@@ -94,6 +111,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "HomePage",
   props: {
@@ -101,10 +120,34 @@ export default {
   },
   data() {
     return {
+      weather: {
+        wind: {
+          speed: 0,
+        },
+        main: {
+          humidity: 0,
+          pressure: 0,
+          feels_like: 0,
+        },
+      },
       currentDay: new Date().getDate(),
       currentMonth: new Date().getMonth() + 1,
       currentYear: new Date().getFullYear(),
     };
+  },
+  mounted() {
+    axios
+      .get(
+        "https://api.openweathermap.org/data/2.5/weather?lat=-22.523977269086362&lon=-43.998343432807246&appid=af12cdf50f700eb1a06c5cce3a336557"
+      )
+      .then((response) => (this.weather = response.data));
+  },
+  async getWeather() {
+    const response = await fetch(
+      "https://api.openweathermap.org/data/2.5/weather?lat=-22.523977269086362&lon=-43.998343432807246&appid=af12cdf50f700eb1a06c5cce3a336557"
+    );
+    const data = await response.json();
+    this.weather = data;
   },
 };
 </script>
