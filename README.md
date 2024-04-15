@@ -1,5 +1,5 @@
 # weather-web
-Weather app being made with Vue.Js and Tailwind CSS
+Weather app made with Vue.Js and Tailwind CSS
 
 #installing
 
